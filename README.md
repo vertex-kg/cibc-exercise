@@ -1,7 +1,16 @@
 # cibc-exercise
 
+## Prerequisites
+
+For this solution to run the following prerequisites must be met:
+
+- Java JDK 11 or 17 should have been installed
+- A compatible Hadoop version e.g. 3.3/3.4/3.5 with HADOOP_HOME environment variable correctly set. For Windows operating system winutils.exe might also be required.
+- Python version 3.12
+
 ## Environment Setup
-The solution has been developed against Python 3.12 and Pyspark 3.5.4.
+
+The solution has been developed against Pyspark 3.5.4.
 To run the code create a Python virtual environment, e.g. from a command prompt run: 
 
 `conda create -n cibc-exercise python=3.12`
@@ -32,7 +41,7 @@ Here is a description of the top level directories:
 - src/jobs/gold - This is where the report generator resides
 - tests - Contains the unit tests of the solution
 
-## Running the Test
+## Running the Tests
 
 Open a terminal window and activate the Python virtual environment of the project, i.e. cibc-exercise.
 Change the current directory to the project root directory.
