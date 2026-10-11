@@ -1,0 +1,8 @@
+#app.ingest-stats.location: 'tests/data/stats/ingest_stats'
+#app.silver-stats.location: 'tests/data/stats/silver_stats'
+#app.market-data.bronze-location: 'tests/data/bronze/market_data/transform/input'
+app.market-data.silver-location: 'tests/data/silver/market_data/reporting/input'
+#app.market-data.corrupt-location: 'tests/data/corrupt/market_data'
+#app.trade-data.bronze-location: 'tests/data/bronze/trades//transform/input'
+app.trade-data.silver-location: 'tests/data/silver/trades/reporting/input'
+#app.trade-data.corrupt-location: 'tests/data/corrupt/trades'

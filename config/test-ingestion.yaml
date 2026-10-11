@@ -1,0 +1,8 @@
+app.market-data.source-name: 'stooq'
+app.ingest-stats.location: 'tests/data/stats/ingest_stats'
+app.silver-stats.location: 'tests/data/stats/silver_stats'
+app.market-data.landing-location: 'tests/data/landing/stooq'
+app.market-data.bronze-location: 'tests/data/bronze/market_data/ingest/out'
+app.trade-data.source-name: 'trades'
+app.trade-data.landing-location: 'tests/data/landing/trades'
+app.trade-data.bronze-location: 'tests/data/bronze/trades/ingest/out'
