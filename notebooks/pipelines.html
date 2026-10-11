@@ -7795,12 +7795,12 @@ a.anchor-link {
 </style>
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<main><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=2f574c76-a6e9-4fdf-a99a-5f29fb905672">
+<main><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2f574c76-a6e9-4fdf-a99a-5f29fb905672">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Execute this code first to correctly configure the sys.path</span>
@@ -7810,7 +7810,7 @@ a.anchor-link {
 
 <span class="c1"># Move up one level from 'notebooks/' to the project root directory</span>
 <span class="n">project_root</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s2">".."</span><span class="p">))</span>
-<span class="n">src_dir</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">project_root</span><span class="si">}</span><span class="s1">'</span>
+<span class="n">src_dir</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">'</span><span class="si">{</span><span class="n">project_root</span><span class="si">}</span><span class="s1">/src'</span>
 <span class="k">if</span> <span class="n">src_dir</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">src_dir</span><span class="p">)</span>
 
@@ -7818,6 +7818,20 @@ a.anchor-link {
 <span class="o">%</span><span class="k">load_ext</span> autoreload
 <span class="o">%</span><span class="k">autoreload</span> 2
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>The autoreload extension is already loaded. To reload it, use:
+  %reload_ext autoreload
+</pre>
 </div>
 </div>
 </div>
@@ -7975,7 +7989,7 @@ INFO:src.jobs.bronze.ingest_job_base:Finished ingesting [trades] data
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Run this cell to produce a Net Position Size report by Book and Symbol</span>
@@ -7998,30 +8012,30 @@ INFO:src.jobs.bronze.ingest_job_base:Finished ingesting [trades] data
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>+------+------+-----------------+-------------------+
-|book  |symbol|net_position_size|average_entry_price|
-+------+------+-----------------+-------------------+
-|Book_A|AAPL  |250              |404.220000         |
-|Book_A|AMZN  |325              |184.811538         |
-|Book_A|BTCUSD|1                |124800.000000      |
-|Book_A|ETHUSD|50               |4900.000000        |
-|Book_A|EURUSD|500000           |2.164200           |
-|Book_A|GBPUSD|250000           |1.301500           |
-|Book_A|GOOG  |150              |168.500000         |
-|Book_A|MSFT  |420              |497.892857         |
-|Book_A|NFLX  |40               |692.500000         |
-|Book_A|NVDA  |600              |190.233333         |
-|Book_A|TSLA  |150              |195.200000         |
-|Book_A|US10Y |500              |165.520000         |
-|Book_B|AAPL  |95               |221.400000         |
-|Book_B|GOOG  |210              |166.800000         |
-|Book_B|META  |60               |572.400000         |
-|Book_B|MSFT  |202              |411.183168         |
-|Book_B|TSLA  |150              |264.000000         |
-|Book_B|US10Y |1850             |103.305405         |
-|Book_C|CL1!  |250              |84.100000          |
-|Book_C|GC1!  |20               |3306.550000        |
-+------+------+-----------------+-------------------+
+<pre>+------+------+-----------------+-------------------+----------+
+|book  |symbol|net_position_size|average_entry_price|as_of_date|
++------+------+-----------------+-------------------+----------+
+|Book_A|AAPL  |250              |404.220000         |2026-10-11|
+|Book_A|AMZN  |325              |184.811538         |2026-10-11|
+|Book_A|BTCUSD|1                |124800.000000      |2026-10-11|
+|Book_A|ETHUSD|50               |4900.000000        |2026-10-11|
+|Book_A|EURUSD|500000           |2.164200           |2026-10-11|
+|Book_A|GBPUSD|250000           |1.301500           |2026-10-11|
+|Book_A|GOOG  |150              |168.500000         |2026-10-11|
+|Book_A|MSFT  |420              |497.892857         |2026-10-11|
+|Book_A|NFLX  |40               |692.500000         |2026-10-11|
+|Book_A|NVDA  |600              |190.233333         |2026-10-11|
+|Book_A|TSLA  |150              |195.200000         |2026-10-11|
+|Book_A|US10Y |500              |165.520000         |2026-10-11|
+|Book_B|AAPL  |95               |221.400000         |2026-10-11|
+|Book_B|GOOG  |210              |166.800000         |2026-10-11|
+|Book_B|META  |60               |572.400000         |2026-10-11|
+|Book_B|MSFT  |202              |411.183168         |2026-10-11|
+|Book_B|TSLA  |150              |264.000000         |2026-10-11|
+|Book_B|US10Y |1850             |103.305405         |2026-10-11|
+|Book_C|CL1!  |250              |84.100000          |2026-10-11|
+|Book_C|GC1!  |20               |3306.550000        |2026-10-11|
++------+------+-----------------+-------------------+----------+
 
 </pre>
 </div>
@@ -8033,7 +8047,7 @@ INFO:src.jobs.bronze.ingest_job_base:Finished ingesting [trades] data
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Run this to generate a PnL report for a specified date by Book and Symbol</span>
@@ -8056,30 +8070,30 @@ INFO:src.jobs.bronze.ingest_job_base:Finished ingesting [trades] data
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>+------+------+---------+
-|book  |symbol|total_pnl|
-+------+------+---------+
-|Book_A|AAPL  |50824.50 |
-|Book_A|AMZN  |24150.28 |
-|Book_A|BTCUSD|40447.20 |
-|Book_A|ETHUSD|4189.00  |
-|Book_A|EURUSD|39490.00 |
-|Book_A|GBPUSD|5570.00  |
-|Book_A|GOOG  |26991.75 |
-|Book_A|MSFT  |56047.50 |
-|Book_A|NFLX  |-24852.80|
-|Book_A|NVDA  |98233.00 |
-|Book_A|TSLA  |26663.67 |
-|Book_A|US10Y |927.50   |
-|Book_B|AAPL  |11030.45 |
-|Book_B|GOOG  |38145.45 |
-|Book_B|META  |8941.20  |
-|Book_B|MSFT  |24066.65 |
-|Book_B|TSLA  |34991.56 |
-|Book_B|US10Y |12873.28 |
-|Book_C|CL1!  |1937.50  |
-|Book_C|GC1!  |39376.50 |
-+------+------+---------+
+<pre>+------+------+---------+----------+
+|book  |symbol|total_pnl|as_of_date|
++------+------+---------+----------+
+|Book_A|AAPL  |50824.50 |2026-10-10|
+|Book_A|AMZN  |24150.28 |2026-10-10|
+|Book_A|BTCUSD|40447.20 |2026-10-10|
+|Book_A|ETHUSD|4189.00  |2026-10-10|
+|Book_A|EURUSD|39490.00 |2026-10-10|
+|Book_A|GBPUSD|5570.00  |2026-10-10|
+|Book_A|GOOG  |26991.75 |2026-10-10|
+|Book_A|MSFT  |56047.50 |2026-10-10|
+|Book_A|NFLX  |-24852.80|2026-10-10|
+|Book_A|NVDA  |98233.00 |2026-10-10|
+|Book_A|TSLA  |26663.67 |2026-10-10|
+|Book_A|US10Y |927.50   |2026-10-10|
+|Book_B|AAPL  |11030.45 |2026-10-10|
+|Book_B|GOOG  |38145.45 |2026-10-10|
+|Book_B|META  |8941.20  |2026-10-10|
+|Book_B|MSFT  |24066.65 |2026-10-10|
+|Book_B|TSLA  |34991.56 |2026-10-10|
+|Book_B|US10Y |12873.28 |2026-10-10|
+|Book_C|CL1!  |1937.50  |2026-10-10|
+|Book_C|GC1!  |39376.50 |2026-10-10|
++------+------+---------+----------+
 
 </pre>
 </div>
