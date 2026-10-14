@@ -107,19 +107,20 @@ class TradeDataTransform(TransformJobBase):
                         .filter(f"business_date >= {from_date} and business_date <= {to_date}"))
 
     def get_good_record_condition(self):
-        good_record_condition = (col("Trade_ID").cast("string").isNotNull() &
-                                 col("Trade_Version").cast("integer").isNotNull() &
+        good_record_condition = (F.col("Trade_ID").cast("string").isNotNull() &
+                                 F.col("Trade_Version").cast("integer").isNotNull() &
                                  F.to_date(col("Trade_Date"), "yyyy-MM-dd").isNotNull() &
-                                 F.regexp(col("Book"), lit(r"[a-zA-Z_]+")).isNotNull() &
+                                 F.regexp(col("Book"), lit(r"[a-zA-Z_]+")).eqNullSafe(True) &
                                  F.to_timestamp(col("Execution_Timestamp"), "yyyy-MM-dd'T'HH:mm:ss.SSSX").isNotNull() &
                                  F.to_timestamp(col("Updated_Timestamp"), "yyyy-MM-dd'T'HH:mm:ss.SSSX").isNotNull() &
-                                 F.regexp(col("Asset_Class"), lit(r"[a-zA-Z_]+")).isNotNull() &
-                                 F.regexp(col("Symbol"), lit(r"[A-Z0-9\^]+")).isNotNull() &
-                                 F.regexp(col("Transaction_Type"), lit(r"BUY|SELL")).isNotNull() &
-                                 col("Quantity").cast("decimal").isNotNull() &
-                                 col("Price").cast("decimal").isNotNull() &
-                                 F.regexp(col("Currency"), lit(r"[A-Z]+")).isNotNull() &
-                                 F.regexp(col("Counterparty"), lit(r"[a-zA-Z0-9\s_]+")).isNotNull() &
-                                 F.regexp(col("Status"), lit(r"[a-zA-Z_]+")).isNotNull())
+                                 F.regexp(col("Asset_Class"), lit(r"[a-zA-Z_]+")).eqNullSafe(True) &
+                                 F.col("Symbol").isNotNull() &
+                                 F.regexp(col("Symbol"), lit(r"[A-Z0-9\^]+")).eqNullSafe(True) &
+                                 F.regexp(col("Transaction_Type"), lit(r"BUY|SELL")).eqNullSafe(True) &
+                                 F.col("Quantity").cast("decimal").isNotNull() &
+                                 F.col("Price").cast("decimal").isNotNull() &
+                                 F.regexp(col("Currency"), lit(r"[A-Z]+")).eqNullSafe(True) &
+                                 F.regexp(col("Counterparty"), lit(r"[a-zA-Z0-9\s_]+")).eqNullSafe(True) &
+                                 F.regexp(col("Status"), lit(r"[a-zA-Z_]+")).eqNullSafe(True))
 
         return good_record_condition

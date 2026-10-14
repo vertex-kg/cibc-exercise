@@ -58,3 +58,29 @@ class ReportGenerator(SparkJobBase):
                         .agg(F.sum('trade_pnl').cast("decimal(38,2)").alias('total_pnl'))
                         .sort('book', 'symbol')
                         .withColumn('as_of_date', F.to_date(F.lit(str(as_of_date)), format='yyyyMMdd')))
+
+    def daily_pnl_report_v2(self, as_of_date: int) -> DataFrame:
+
+        positions_df = self.net_positions_report()
+
+        positions_df = (positions_df
+                     .withColumn('as_of_date', F.to_date(F.lit(as_of_date).cast('string'), format='yyyyMMdd')))
+
+        prices_df = (self.spark
+                     .read
+                     .format('delta')
+                     .load(self.market_data_silver_location)
+                     .select('ticker', 'date', 'close'))
+
+        joined_df = positions_df.alias('positions')._joinAsOf(
+            prices_df.alias('prices'),
+            leftAsOfColumn='as_of_date',
+            rightAsOfColumn='date',
+            on=F.expr("positions.symbol = prices.ticker"),
+            how="left")
+
+        return (joined_df
+                        .withColumn('position_pnl', F.expr("(close - average_entry_price) * net_position_size"))
+                        .select('book', 'symbol', 'net_position_size', 'average_entry_price', 'close', 'position_pnl', 'as_of_date')
+                        .sort('book', 'symbol'))
+
